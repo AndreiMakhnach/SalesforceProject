@@ -22,5 +22,6 @@ public with sharing class serviceCaseQueueFiltered {
                             LIMIT 25];
 
         return cases;
+        
     }
 }
