@@ -1,0 +1,68 @@
+<template>
+    <div class="slds-m-around_medium">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-text-title_caps" scope="col">
+                        #
+                    </th>
+                    <th class="slds-text-title_caps" scope="col">
+                        Case number
+                    </th>
+                    <th class="slds-text-title_caps" scope="col">
+                        Assignee
+                    </th>
+                    <th class="slds-text-title_caps" scope="col">
+                        Case status
+                    </th>
+                    <th class="slds-text-title_caps" scope="col">
+                        Priority
+                    </th>
+                    <th class="slds-text-title_caps" scope="col">
+                        Origin
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={data} for:item="row" for:index="index">
+                    <tr key={row.id} class={index % 2 = 0 ? 'slds-hint-parent' : ''}>
+                        <td data-label="Column 1">
+                            {row.#}
+                        </td>
+                        <td data-label="Column 2">
+                            {row.Case number}
+                        </td>
+                        <td data-label="Column 3">
+                            {row.Assignee}
+                        </td>
+                        <td data-label="Column 4">
+                            {row.Case status}
+                        </td>
+                        <td data-label="Column 5">
+                            {row.Priority}
+                        </td>
+                        <td data-label="Column 6">
+                            {row.Origin}
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+    <lightning-card title="User Cases">
+        <div class="slds-m-around_medium">
+            <template if:true={cases.data}>
+                <ul>
+                    <template for:each={cases.data} for:item="caseRecord">
+                        <li key={caseRecord.Id}>
+                            {caseRecord.Subject} - {caseRecord.Priority}
+                        </li>
+                    </template>
+                </ul>
+            </template>
+            <template if:true={cases.error}>
+                <p>Error retrieving cases</p>
+            </template>
+        </div>
+    </lightning-card> 
+</template>
